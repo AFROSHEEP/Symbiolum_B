@@ -4,10 +4,6 @@ using UnityEngine;
 
 public class AnimalManager : MonoBehaviour
 {
-    List<GameObject> Animals = new List<GameObject>();
-
-    public delegate void range();
-    public static event range in_range;
     // Start is called before the first frame update
     void Start()
     {
