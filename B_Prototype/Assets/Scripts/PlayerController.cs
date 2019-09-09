@@ -69,7 +69,7 @@ public class PlayerController : MonoBehaviour
             moveDirection *= speed;
 
             if (can_jump && Input.GetButton("Jump"))
-                moveDirection.y = jumpSpeed;
+                moveDirection.y += jumpSpeed;
 
             //jumps = 0;
         }
