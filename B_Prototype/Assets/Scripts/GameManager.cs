@@ -4,14 +4,12 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public void possess()
+    private void OnEnable()
     {
-        //get animal in range
-        //player pos = animal pos and lock
-        //make it so can't possess again
-        //turn off wisp mesh renderer
-        //change movement variables
-        //enable animal skill
+    }
+
+    private void OnDisable()
+    {
     }
 
     // Start is called before the first frame update
@@ -23,6 +21,5 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
     }
 }
