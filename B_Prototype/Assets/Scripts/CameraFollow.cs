@@ -5,11 +5,11 @@ public class CameraFollow : MonoBehaviour
     public Transform target;
     public float smoothSpeed;
     public float rotation_speed;
-    public Vector3 offset;
+    public Vector3 offset = new Vector3(-7, 25, 17);
 
     private void Start()
     {
-        
+        offset = new Vector3(-7, 25, 17);
     }
 
     private void LateUpdate()
