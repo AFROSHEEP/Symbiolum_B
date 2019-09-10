@@ -16,7 +16,23 @@ public class GameManager : MonoBehaviour
             Application.Quit();
 
         if (Input.GetKeyDown(KeyCode.Alpha1))
-            SceneManager.LoadScene("SampleScene");
+            restart_scene();
+    }
+
+    private void OnEnable()
+    {
+        kill_player.restart += restart_scene;
+    }
+
+    private void OnDisable()
+    {
+        kill_player.restart -= restart_scene;
+    }
+
+    void restart_scene()
+    {
+        SceneManager.LoadScene("Main2");
+        Debug.Log("collided");
 
     }
 }

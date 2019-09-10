@@ -26,6 +26,7 @@ public class bear_collider : MonoBehaviour
             
             //transform.parent.rotation = player.transform.rotation;
         }
+    
     }
 
     private void OnTriggerEnter(Collider other)

@@ -40,6 +40,7 @@ public class mole_collider : MonoBehaviour
     {
         PlayerController.possess_mole += start_hosting_mole;
         PlayerController.unpossess_mole += end_hosting_mole;
+        //PlayerController.mole_skill += mole
     }
 
     private void OnDisable()
