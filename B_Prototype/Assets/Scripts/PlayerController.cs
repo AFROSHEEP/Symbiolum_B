@@ -15,15 +15,20 @@ public class PlayerController : MonoBehaviour
     //private int jumps = 0;
 
     private Vector3 moveDirection = Vector3.zero;
-    private Vector3 playerScale;
+    //private Vector3 playerScale;
 
     private bool range_bear;
     private bool range_mole;
+
+    private bool bear_hosting;
+    private bool mole_hosting;
+
+    private bool mole_skill_active;
+
     private bool is_hosted;
-    private bool can_jump = true;
     private bool can_possess = true;
-    private bool can_bear_skill;
-    private bool can_mole_skill;
+
+    private bool can_jump = true;
 
     public delegate void possess();
     public static event possess possess_bear;
@@ -35,70 +40,74 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         speed = wisp_speed;
-        playerScale = transform.localScale;
+        //playerScale = transform.localScale;
         characterController = GetComponent<CharacterController>();
     }
 
     void Update()
     {
         Move();
-        check_host_bear();
-        check_host_mole();
-        bear_skill();
 
+        if (Input.GetKeyDown(KeyCode.E))
+            jump_animal();
+
+        if (Input.GetMouseButtonDown(0))
+            activate_skill();
     }
 
-    private void bear_skill()
+    void unhost_current()
     {
-        if (can_bear_skill && Input.GetMouseButtonDown(0))
-            Debug.Log("Bear Skill");
-    }
-
-    private void mole_skill()
-    {
-        if (can_mole_skill && Input.GetMouseButtonDown(0))
-            Debug.Log("Mole Skill");
-    }
-
-    private void check_host_bear()
-    {
-        if (range_bear && Input.GetKeyDown(KeyCode.E))
+        if (bear_hosting)
         {
-            if (can_possess && !is_hosted )
+            if (unpossess_bear != null)
+                unpossess_bear();
+
+            bear_unhost();
+        }
+        else if (mole_hosting)
+        {
+            if (unpossess_mole != null)
+                unpossess_mole();
+
+            mole_unhost();
+        }
+    }
+
+    void jump_animal()
+    {
+        if (is_hosted)
+            unhost_current();
+
+        else if (can_possess)
+        {
+            if (range_bear && !range_mole)
             {
                 if (possess_bear != null)
                     possess_bear();
 
                 bear_host();
             }
-            else
-            {
-                if (unpossess_bear != null)
-                    unpossess_bear();
 
-                bear_unhost();
-            }
-        }
-    }
-
-    private void check_host_mole()
-    {
-        if (range_mole && Input.GetKeyDown(KeyCode.E))
-        {
-            if (can_possess && !is_hosted)
+            else if (range_mole && !range_bear)
             {
                 if (possess_mole != null)
                     possess_mole();
 
                 mole_host();
             }
-            else
-            {
-                if (unpossess_mole != null)
-                    unpossess_mole();
+        }
+    }
 
-                mole_unhost();
-            }
+    void activate_skill()
+    {
+        if (bear_hosting)
+        {
+            Debug.Log("Bear Skill");
+        }
+
+        if (mole_hosting)
+        {
+
         }
     }
 
@@ -179,14 +188,14 @@ public class PlayerController : MonoBehaviour
     {
         can_possess = false;
         is_hosted = true;
-        can_bear_skill = true; 
+        bear_hosting = true;
 
         // make player invisible
         //transform.localScale = new Vector3(0, 0, 0);
         GetComponentInChildren<MeshRenderer>().enabled = false;
 
         // change player movement variables
-        speed = bear_speed; 
+        speed = bear_speed;
         can_jump = false;
     }
 
@@ -194,8 +203,7 @@ public class PlayerController : MonoBehaviour
     {
         can_possess = true;
         is_hosted = false;
-        can_jump = true;
-        can_bear_skill = false;
+        bear_hosting = false;
 
         // eject player out of host
         //GetComponentInParent<Rigidbody>().AddForce(Vector3.up * thrust);
@@ -207,13 +215,14 @@ public class PlayerController : MonoBehaviour
 
         // wisp movement variables
         speed = wisp_speed;
+        can_jump = true;
     }
 
     void mole_host()
     {
         can_possess = false;
         is_hosted = true;
-        can_mole_skill = true;
+        mole_hosting = true;
 
         //transform.localScale = new Vector3(0, 0, 0);
         GetComponentInChildren<MeshRenderer>().enabled = false;
@@ -231,8 +240,7 @@ public class PlayerController : MonoBehaviour
     {
         can_possess = true;
         is_hosted = false;
-        can_jump = true;
-        can_mole_skill = false;
+        mole_hosting = false;
 
         // eject player out of host
         //GetComponentInParent<Rigidbody>().AddForce(Vector3.up * thrust);
@@ -241,8 +249,9 @@ public class PlayerController : MonoBehaviour
         //transform.localScale = playerScale;
         GetComponentInChildren<MeshRenderer>().enabled = true;
 
-        // wisp movement variables
         speed = wisp_speed;
+        can_jump = true;
     }
 
 }
+
