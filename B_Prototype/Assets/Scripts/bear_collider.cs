@@ -8,6 +8,7 @@ public class bear_collider : MonoBehaviour
 
     private bool is_possessed;
     public GameObject player;
+    Vector3 playerPos;
 
     // Start is called before the first frame update
     void Start()
@@ -19,8 +20,11 @@ public class bear_collider : MonoBehaviour
     {
         if (is_possessed)
         {
+            //playerPos = player.transform.position;
+            //playerPos.y += 2;
             transform.parent.position = player.transform.position;
-            transform.parent.rotation = player.transform.rotation;
+            
+            //transform.parent.rotation = player.transform.rotation;
         }
     }
 

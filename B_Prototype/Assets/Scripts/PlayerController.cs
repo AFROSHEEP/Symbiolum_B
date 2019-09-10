@@ -107,7 +107,7 @@ public class PlayerController : MonoBehaviour
         if (characterController.isGrounded)
         {
             moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0.0f, Input.GetAxis("Vertical"));
-            moveDirection = transform.TransformDirection(moveDirection);
+            moveDirection = transform.TransformDirection(-moveDirection);
             moveDirection *= speed;
 
             if (can_jump && Input.GetButton("Jump"))
@@ -119,7 +119,7 @@ public class PlayerController : MonoBehaviour
         else
         {
             moveDirection = new Vector3(Input.GetAxis("Horizontal"), moveDirection.y, Input.GetAxis("Vertical"));
-            moveDirection = transform.TransformDirection(moveDirection);
+            moveDirection = transform.TransformDirection(-moveDirection);
             moveDirection.x *= speed;
             moveDirection.z *= speed;
 
