@@ -5,14 +5,21 @@ using UnityEngine.SceneManagement;
 
 public class kill_player : MonoBehaviour
 {
-
     public delegate void kill();
-    public static event kill restart; 
-    private void OnTriggerEnter(Collider other)
-    {
+    public static event kill restart;
 
-        if (other.gameObject.tag == "Player")
-            if (restart != null)
-                restart();
+    public GameObject mole;
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (mole.transform.Find("range_sphere").GetComponentInChildren<mole_collider>().skill_active)
+        {
+            transform.Find("impassible cube").GetComponent<BoxCollider>().enabled = false;
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        transform.Find("impassible cube").GetComponent<BoxCollider>().enabled = true;
     }
 }
