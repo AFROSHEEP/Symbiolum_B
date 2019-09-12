@@ -16,7 +16,7 @@ public class bear_collider : MonoBehaviour
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+    void Update()
     {
         if (is_possessed)
         {
@@ -55,7 +55,6 @@ public class bear_collider : MonoBehaviour
 
     private void start_hosting_bear()
     {
-        Debug.Log("stone is hosting");
         //gameObject.GetComponentInChildren<MeshCollider>().enabled = false;
         is_possessed = true;
     }
@@ -63,7 +62,6 @@ public class bear_collider : MonoBehaviour
     private void end_hosting_bear()
     {
         //gameObject.GetComponentInChildren<MeshCollider>().enabled = true;
-        Debug.Log("stone is not hosting");
         is_possessed = false;
 
         // deactivate skill

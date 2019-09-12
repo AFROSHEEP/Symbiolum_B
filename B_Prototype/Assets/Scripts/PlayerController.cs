@@ -42,12 +42,18 @@ public class PlayerController : MonoBehaviour
         characterController = GetComponent<CharacterController>();
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "Animal")
+            jump_animal(other);
+    }
+
     void Update()
     {
         Move();
 
         if (Input.GetKeyDown(KeyCode.E))
-            jump_animal();
+            unhost_current();
     }
 
     void unhost_current()
@@ -59,7 +65,7 @@ public class PlayerController : MonoBehaviour
 
             bear_unhost();
         }
-        else if (mole_hosting)
+        if (mole_hosting)
         {
             if (unpossess_mole != null)
                 unpossess_mole();
@@ -68,30 +74,52 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    void jump_animal()
+    void jump_animal(Collider other)
     {
         if (is_hosted)
             unhost_current();
 
-        else if (can_possess)
+        if (other.transform.GetComponentInChildren<bear_collider>() != null)
         {
-            if (range_bear && !range_mole)
-            {
-                if (possess_bear != null)
-                    possess_bear();
+            if (possess_bear != null)
+                possess_bear();
 
-                bear_host();
-            }
+            bear_host();
+        }
 
-            else if (range_mole && !range_bear)
-            {
-                if (possess_mole != null)
-                    possess_mole();
+        if (other.transform.GetComponentInChildren<mole_collider>() != null)
+        {
+            if (possess_mole != null)
+                possess_mole();
 
-                mole_host();
-            }
+            mole_host();
         }
     }
+
+    //void jump_animal()
+    //{
+    //    if (is_hosted)
+    //        unhost_current();
+
+    //    else if (can_possess)
+    //    {
+    //        if (range_bear && !range_mole)
+    //        {
+    //            if (possess_bear != null)
+    //                possess_bear();
+
+    //            bear_host();
+    //        }
+
+    //        else if (range_mole && !range_bear)
+    //        {
+    //            if (possess_mole != null)
+    //                possess_mole();
+
+    //            mole_host();
+    //        }
+    //    }
+    //}
 
     private void Move()
     {
@@ -144,25 +172,25 @@ public class PlayerController : MonoBehaviour
 
     void in_range_bear()
     {
-        Debug.Log("in_range_bear");
+        //Debug.Log("in_range_bear");
         range_bear = true;
     }
 
     void out_range_bear()
     {
-        Debug.Log("out_range_bear");
+        //Debug.Log("out_range_bear");
         range_bear = false;
     }
 
     void in_range_mole()
     {
-        Debug.Log("in_range_mole");
+        //Debug.Log("in_range_mole");
         range_mole = true;
     }
 
     void out_range_mole()
     {
-        Debug.Log("out_range_mole");
+        //Debug.Log("out_range_mole");
         range_mole = false;
     }
 

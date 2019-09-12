@@ -12,10 +12,13 @@ public class kill_player : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if (mole.transform.Find("range_sphere").GetComponentInChildren<mole_collider>().skill_active)
+        if (mole.transform.Find("Mole_model").GetComponentInChildren<mole_collider>().skill_active)
         {
             transform.Find("impassible cube").GetComponent<BoxCollider>().enabled = false;
         }
+
+        // else
+        // kill_player
     }
 
     private void OnTriggerExit(Collider other)
