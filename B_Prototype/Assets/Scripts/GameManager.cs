@@ -32,7 +32,5 @@ public class GameManager : MonoBehaviour
     void restart_scene()
     {
         SceneManager.LoadScene("Main2");
-        Debug.Log("collided");
-
     }
 }

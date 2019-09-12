@@ -65,5 +65,7 @@ public class bear_collider : MonoBehaviour
         //gameObject.GetComponentInChildren<MeshCollider>().enabled = true;
         Debug.Log("stone is not hosting");
         is_possessed = false;
+
+        // deactivate skill
     }
 }
