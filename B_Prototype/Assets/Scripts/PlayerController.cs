@@ -24,8 +24,6 @@ public class PlayerController : MonoBehaviour
     private bool bear_hosting;
     private bool mole_hosting;
 
-    private bool mole_skill_active;
-
     private bool is_hosted;
     private bool can_possess = true;
 
@@ -51,9 +49,6 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.E))
             jump_animal();
-
-        if (Input.GetMouseButtonDown(0))
-            activate_skill();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -104,19 +99,6 @@ public class PlayerController : MonoBehaviour
 
                 mole_host();
             }
-        }
-    }
-
-    void activate_skill()
-    {
-        if (bear_hosting)
-        {
-            Debug.Log("Bear Skill");
-        }
-
-        if (mole_hosting)
-        {
-
         }
     }
 
