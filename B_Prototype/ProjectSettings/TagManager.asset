@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Animal
   - Movable
+  - Goal
   layers:
   - Default
   - TransparentFX
