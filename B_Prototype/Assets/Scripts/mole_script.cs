@@ -1,12 +1,8 @@
 ﻿using UnityEngine;
 
-public class mole_collider : MonoBehaviour
+public class mole_script : MonoBehaviour
 {
-    public delegate void mole();
-    public static event mole mole_in_range;
-    public static event mole mole_out_range;
-
-    private bool is_possessed;
+    public bool is_possessed;
     public bool skill_active;
     public GameObject player;
     public GameObject parent;
@@ -19,42 +15,13 @@ public class mole_collider : MonoBehaviour
         if (is_possessed)
         {
             transform.parent.position = player.transform.position;
-            //transform.parent.rotation = player.transform.rotation;
 
-            if (Input.GetMouseButtonDown(0))
-            {
+            if (Input.GetKeyDown(KeyCode.Q))
                 activate_skill();
-                //Debug.Log("mouse1");
-                //Debug.Log("skill_active: " + skill_active);
-            }
         }
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (mole_in_range != null)
-            mole_in_range();
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        if (mole_out_range != null)
-            mole_out_range();
-    }
-
-    private void OnEnable()
-    {
-        PlayerController.possess_mole += start_hosting_mole;
-        PlayerController.unpossess_mole += end_hosting_mole;
-    }
-
-    private void OnDisable()
-    {
-        PlayerController.possess_mole -= start_hosting_mole;
-        PlayerController.unpossess_mole -= end_hosting_mole;
-    }
-
-    void activate_skill()
+    public void activate_skill()
     {
         if (skill_active)
             deactivate_skill();
@@ -75,10 +42,6 @@ public class mole_collider : MonoBehaviour
             BoxCollider[] bs = parent.GetComponentsInChildren<BoxCollider>();
             foreach (BoxCollider b in bs)
                 b.enabled = false;
-
-            //SphereCollider[] ss = parent.GetComponentsInChildren<SphereCollider>();
-            //foreach (SphereCollider s in ss)
-            //    s.enabled = false;
         }
     }
 

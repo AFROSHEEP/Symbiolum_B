@@ -19,17 +19,7 @@ public class GameManager : MonoBehaviour
             restart_scene();
     }
 
-    private void OnEnable()
-    {
-        kill_player.restart += restart_scene;
-    }
-
-    private void OnDisable()
-    {
-        kill_player.restart -= restart_scene;
-    }
-
-    void restart_scene()
+    public void restart_scene()
     {
         SceneManager.LoadScene("Main2");
     }
