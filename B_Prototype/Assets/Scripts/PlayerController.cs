@@ -43,9 +43,16 @@ public class PlayerController : MonoBehaviour
             moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0.0f, Input.GetAxis("Vertical"));
             moveDirection *= -speed;
 
-            if (Input.GetButton("Jump"))
-                moveDirection.y = jumpSpeed;
+            //if (Input.GetKeyDown(KeyCode.Space))
+            //    moveDirection.y = jumpSpeed;
         }
+
+        //else
+        //{
+        //    moveDirection.x = Input.GetAxis("Horizontal") * speed;
+        //    moveDirection.z = Input.GetAxis("Vertical") * speed;
+        //    moveDirection = transform.TransformDirection(-moveDirection);
+        //}
 
         //else
         //{
@@ -55,7 +62,7 @@ public class PlayerController : MonoBehaviour
         //    moveDirection.z *= speed;
         //}
 
-            moveDirection.y -= gravity * Time.deltaTime;
+        moveDirection.y -= gravity * Time.deltaTime;
         characterController.Move(moveDirection * Time.deltaTime);
     }
 
@@ -64,39 +71,54 @@ public class PlayerController : MonoBehaviour
         switch(host.type)
         {
             case Animal.Bear:
-                // unpossess bear
-                //bear unhost
+                GetComponentInChildren<MeshRenderer>().enabled = true;
+                host.GetComponent<bear_script>().end_hosting_bear();
+                host = null;
+                eject();
                 break;
             case Animal.Mole:
-                // unpossess mole
-                // mole_unhost
+                GetComponentInChildren<MeshRenderer>().enabled = true;
+                host.GetComponent<mole_script>().end_hosting_mole();
+                host = null;
+                eject();
                 break;
             case Animal.Fish:
-                // unpossess fish
-                // fish_unhost
+                GetComponentInChildren<MeshRenderer>().enabled = true;
+                host.GetComponent<fish_script>().end_hosting_fish();
+                host = null;
+                eject();
                 break;
         }
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider animal)
     {
-        start_hosting(other);
+        start_hosting(animal);
     }
 
-    private void start_hosting(Collider other)
+    private void start_hosting(Collider animal)
     {
-        Debug.Log("start_hosting");
+        //Debug.Log("start_hosting");
 
-        if (other.transform.GetComponent<Host>() != null)
+        if (animal.transform.GetComponent<Host>() != null)
         {
-            Debug.Log("in if");
+            //Debug.Log("in if");
 
-            host = other.transform.GetComponent<Host>();
-            //transform.GetComponent<MeshRenderer>().enabled = false;
+            host = animal.transform.GetComponent<Host>();
+            GetComponentInChildren<MeshRenderer>().enabled = false;
             transform.position = host.transform.position;
             speed = host.speed;
             jumpSpeed = host.jumpSpeed;
         }
+    }
+
+    private void eject()
+    {
+        Debug.Log("eject");
+
+        moveDirection.y = jumpSpeed;
+        moveDirection.y -= gravity * Time.deltaTime;
+        characterController.Move(moveDirection * Time.deltaTime);
     }
 }
 

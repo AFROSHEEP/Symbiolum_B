@@ -2,20 +2,28 @@
 
 public class bear_script : MonoBehaviour
 {
-    private bool is_possessed;
+    public bool is_possessed;
+    public bool skill_active;
+
     public GameObject player;
-    Vector3 playerPos;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-    }
-
-    // Update is called once per frame
     void Update()
     {
         if (is_possessed)
-            transform.parent.position = player.transform.position;
+            transform.position = player.transform.position;
+    }
+
+    public void activate_skill()
+    {
+        if (skill_active)
+            deactivate_skill();
+
+        skill_active = true;
+    }
+
+    public void deactivate_skill()
+    {
+        skill_active = false;
     }
 
     private void start_hosting_bear()
@@ -23,10 +31,9 @@ public class bear_script : MonoBehaviour
         is_possessed = true;
     }
 
-    private void end_hosting_bear()
+    public void end_hosting_bear()
     {
+        deactivate_skill();
         is_possessed = false;
-
-        // deactivate skill
     }
 }

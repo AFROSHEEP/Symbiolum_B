@@ -19,17 +19,9 @@ public class Host : MonoBehaviour
     public GameObject Bear;
     public GameObject Fish;
 
-
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetKeyDown(KeyCode.Q))
             activate();
     }
 
@@ -38,6 +30,7 @@ public class Host : MonoBehaviour
         switch (type)
         {
             case Animal.Bear:
+                Bear.GetComponentInChildren<bear_script>().activate_skill();
                 break;
             case Animal.Mole:
                 Mole.GetComponentInChildren<mole_script>().activate_skill();

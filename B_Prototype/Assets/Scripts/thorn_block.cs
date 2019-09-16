@@ -7,10 +7,10 @@ public class thorn_block : MonoBehaviour
 
     private void Update()
     {
-        if (mole.transform.Find("Mole_model").GetComponentInChildren<mole_script>().skill_active)
-            transform.Find("impassible cube").GetComponent<BoxCollider>().enabled = false;
+        if (mole.GetComponentInChildren<mole_script>().skill_active)
+            GetComponent<BoxCollider>().enabled = false;
         else
-            transform.Find("impassible cube").GetComponent<BoxCollider>().enabled = false;
+            GetComponent<BoxCollider>().enabled = true;
 
         // else
         // kill_player

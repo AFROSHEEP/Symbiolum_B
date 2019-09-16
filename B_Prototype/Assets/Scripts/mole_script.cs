@@ -4,21 +4,15 @@ public class mole_script : MonoBehaviour
 {
     public bool is_possessed;
     public bool skill_active;
+
     public GameObject player;
     public GameObject parent;
-
     public GameObject Lilipad;
 
-    // Start is called before the first frame update
     void Update()
     {
         if (is_possessed)
-        {
-            transform.parent.position = player.transform.position;
-
-            if (Input.GetKeyDown(KeyCode.Q))
-                activate_skill();
-        }
+            transform.position = player.transform.position;
     }
 
     public void activate_skill()
@@ -63,12 +57,12 @@ public class mole_script : MonoBehaviour
             b.enabled = true;
     }
 
-    private void start_hosting_mole()
+    public void start_hosting_mole()
     {
         is_possessed = true;
     }
 
-    private void end_hosting_mole()
+    public void end_hosting_mole()
     {
         deactivate_skill();
         is_possessed = false;
