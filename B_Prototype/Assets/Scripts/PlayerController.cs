@@ -12,6 +12,8 @@ public class PlayerController : MonoBehaviour
     public float horizontalSpeed = 2.0F;
     public float verticalSpeed = 2.0F;
 
+    public ParticleSystem PartSys;
+
     private Vector3 moveDirection = Vector3.zero;
 
     void Start()
@@ -41,55 +43,45 @@ public class PlayerController : MonoBehaviour
     {
         if (characterController.isGrounded)
         {
-            moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0.0f, Input.GetAxis("Vertical"));
+            moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
+            moveDirection = transform.TransformDirection(moveDirection);
             moveDirection *= -speed;
 
             //if (Input.GetKeyDown(KeyCode.Space))
             //    moveDirection.y = jumpSpeed;
         }
 
-        //else
-        //{
-        //    moveDirection.x = Input.GetAxis("Horizontal") * speed;
-        //    moveDirection.z = Input.GetAxis("Vertical") * speed;
-        //    moveDirection = transform.TransformDirection(-moveDirection);
-        //}
-
-        //else
-        //{
-        //    moveDirection = new Vector3(Input.GetAxis("Horizontal"), moveDirection.y, Input.GetAxis("Vertical"));
-        //    moveDirection = transform.TransformDirection(-moveDirection);
-        //    moveDirection.x *= speed;
-        //    moveDirection.z *= speed;
-        //}
+        else
+        {
+            moveDirection = new Vector3(Input.GetAxis("Horizontal"), moveDirection.y, Input.GetAxis("Vertical"));
+            moveDirection = transform.TransformDirection(moveDirection);
+            moveDirection.x *= -speed;
+            moveDirection.z *= -speed;
+        }
 
         moveDirection.y -= gravity * Time.deltaTime;
-        characterController.Move(moveDirection * Time.deltaTime);
+            characterController.Move(moveDirection * Time.deltaTime);
     }
 
     private void unhost()
     {
-        switch(host.type)
+        switch (host.type)
         {
             case Animal.Bear:
-                GetComponentInChildren<MeshRenderer>().enabled = true;
                 host.GetComponent<bear_script>().end_hosting_bear();
-                host = null;
-                eject();
                 break;
             case Animal.Mole:
-                GetComponentInChildren<MeshRenderer>().enabled = true;
                 host.GetComponent<mole_script>().end_hosting_mole();
-                host = null;
-                eject();
                 break;
             case Animal.Fish:
-                GetComponentInChildren<MeshRenderer>().enabled = true;
                 host.GetComponent<fish_script>().end_hosting_fish();
-                host = null;
-                eject();
                 break;
         }
+
+        GetComponentInChildren<MeshRenderer>().enabled = true;
+        host = null;
+        GetComponentInChildren<ParticleSystem>().Play();
+        eject();
     }
 
     private void OnTriggerEnter(Collider animal)
@@ -104,7 +96,7 @@ public class PlayerController : MonoBehaviour
         if (animal.transform.GetComponent<Host>() != null)
         {
             //Debug.Log("in if");
-
+            GetComponentInChildren<ParticleSystem>().Stop();
             host = animal.transform.GetComponent<Host>();
             GetComponentInChildren<MeshRenderer>().enabled = false;
             transform.position = host.transform.position;
