@@ -55,7 +55,7 @@ public class PlayerController : MonoBehaviour
     {
         if(other.tag == "Goal")
         {
-            SceneManager.LoadScene("EndScreen");
+            SceneManager.LoadScene("Garrett");
         }
     }
 
