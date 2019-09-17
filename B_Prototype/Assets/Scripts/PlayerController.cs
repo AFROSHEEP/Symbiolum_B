@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -33,6 +34,14 @@ public class PlayerController : MonoBehaviour
 
             if (Input.GetKey(KeyCode.E))
                 unhost();
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "Goal")
+        {
+            SceneManager.LoadScene("Garrett");
         }
     }
 
