@@ -6,6 +6,6 @@ public class endzone_script : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Player")
-            GM.GetComponent<GameManager>().load_scene("Garrett");
+            GM.GetComponent<GameManager>().load_scene("EndScreen");
     }
 }
