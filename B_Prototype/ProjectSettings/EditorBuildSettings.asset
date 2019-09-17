@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/EndScreen.unity
     guid: 2a8f81cb604104871a3c69b81b294495
+  - enabled: 1
+    path: Assets/Scenes/Garrett.unity
+    guid: 62428aa60e3f04d40abb38cacd85041c
   m_configObjects: {}
