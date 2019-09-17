@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -48,6 +49,14 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.E))
             jump_animal();
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.tag == "Goal")
+        {
+            SceneManager.LoadScene("Garrett");
+        }
     }
 
     void unhost_current()
