@@ -37,14 +37,6 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.tag == "Goal")
-        {
-            SceneManager.LoadScene("Garrett");
-        }
-    }
-
     private void Move()
     {
         if (characterController.isGrounded)
