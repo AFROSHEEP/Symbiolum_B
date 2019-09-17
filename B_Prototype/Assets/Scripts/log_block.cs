@@ -4,17 +4,20 @@ using UnityEngine;
 
 public class log_block : MonoBehaviour
 {
-    public GameObject Bear;
-    void OnTriggerEnter(Collider other)
+    public GameObject log;
+    void OnTriggerStay(Collider other)
     {
-        if (Bear.GetComponentInChildren<bear_script>().skill_active)
-        {
-            GetComponent<Rigidbody>().AddForce(20, 20, 20);
-        }
+        if (other.gameObject.tag == "Player")
+            if (other.gameObject.GetComponent<PlayerController>().host != null)
+                if (other.gameObject.GetComponent<PlayerController>().host.type == Animal.Bear)
+                    log.GetComponent<Rigidbody>().isKinematic = false;
     }
 
-    void start()
+    private void OnTriggerExit(Collider other)
     {
-        GetComponent<Rigidbody>().AddRelativeForce(200.0f, 200.0f, 200.0f);
+        if (other.gameObject.tag == "Player")
+            if (other.gameObject.GetComponent<PlayerController>().host != null)
+                if (other.gameObject.GetComponent<PlayerController>().host.type == Animal.Bear)
+                    log.GetComponent<Rigidbody>().isKinematic = true;
     }
 }
