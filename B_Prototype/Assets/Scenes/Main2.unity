@@ -23500,6 +23500,7 @@ GameObject:
   - component: {fileID: 1323753553}
   - component: {fileID: 1323753552}
   - component: {fileID: 1323753551}
+  - component: {fileID: 1323753555}
   m_Layer: 0
   m_Name: River
   m_TagString: Untagged
@@ -23580,6 +23581,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1323753555
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1323753550}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e37595873ca3b84198ad8e8ac75a5a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timer: 2
 --- !u!1001 &1332896621
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -33789,7 +33803,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1960096029}
   m_LocalRotation: {x: 0.12611263, y: 0.87474173, z: -0.41326693, w: 0.21939258}
-  m_LocalPosition: {x: 0, y: -23.5, z: -53.5}
+  m_LocalPosition: {x: 0, y: -23.5, z: -36.6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 446853815}
