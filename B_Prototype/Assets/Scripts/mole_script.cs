@@ -20,7 +20,7 @@ public class mole_script : MonoBehaviour
         if (skill_active)
             deactivate_skill();
 
-        else
+        else if(is_possessed)
         {
             skill_active = true;
 
