@@ -10,7 +10,11 @@ public class bear_script : MonoBehaviour
     void Update()
     {
         if (is_possessed)
-            transform.position = player.transform.position;
+        {
+            
+            //transform.position = player.transform.position;
+            transform.rotation = player.transform.rotation;
+        }
     }
 
     public void activate_skill()

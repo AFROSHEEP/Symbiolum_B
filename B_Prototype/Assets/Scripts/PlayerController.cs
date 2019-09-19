@@ -30,7 +30,8 @@ public class PlayerController : MonoBehaviour
         if (host != null)
         {
             host.transform.SetPositionAndRotation(new Vector3(transform.position.x,
-                transform.position.y + host.yOffset, transform.position.z), host.transform.rotation);
+                transform.position.y + host.yOffset, transform.position.z), this.transform.rotation);
+            //Debug.Log(this.transform.rotation.y);
 
             if (Input.GetKey(KeyCode.E))
                 unhost();
@@ -39,15 +40,25 @@ public class PlayerController : MonoBehaviour
 
     private void Move()
     {
+        float vInput = Input.GetAxis("Vertical");
+        float hInput = Input.GetAxis("Horizontal");
+        
+
         if (characterController.isGrounded)
         {
-            moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0.0f, Input.GetAxis("Vertical"));
+            moveDirection = new Vector3(hInput, 0.0f, vInput);
             moveDirection *= -speed;
 
             //if (Input.GetKeyDown(KeyCode.Space))
             //    moveDirection.y = jumpSpeed;
         }
 
+        if (hInput != 0 || vInput != 0)
+        {
+            Quaternion newRotation = Quaternion.LookRotation(moveDirection);
+            transform.rotation = Quaternion.Slerp(transform.rotation, newRotation, 0.5f);
+            
+        }
         //else
         //{
         //    moveDirection.x = Input.GetAxis("Horizontal") * speed;
@@ -65,6 +76,7 @@ public class PlayerController : MonoBehaviour
 
         moveDirection.y -= gravity * Time.deltaTime;
         characterController.Move(moveDirection * Time.deltaTime);
+        
     }
 
     private void unhost()
@@ -107,7 +119,8 @@ public class PlayerController : MonoBehaviour
 
             host = animal.transform.GetComponent<Host>();
             GetComponentInChildren<MeshRenderer>().enabled = false;
-            transform.position = host.transform.position;
+            //transform.position = host.transform.position;
+            //transform.rotation = host.transform.rotation;
             speed = host.speed;
             jumpSpeed = host.jumpSpeed;
         }
