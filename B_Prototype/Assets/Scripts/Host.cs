@@ -33,9 +33,26 @@ public class Host : MonoBehaviour
                 Bear.GetComponentInChildren<bear_script>().activate_skill();
                 break;
             case Animal.Mole:
+                Debug.Log("Activating");
                 Mole.GetComponentInChildren<mole_script>().activate_skill();
                 break;
             case Animal.Fish:
+                break;
+        }
+    }
+
+    public void start_host()
+    {
+        switch (type)
+        {
+            case Animal.Bear:
+                Bear.GetComponentInChildren<bear_script>().start_hosting_bear();
+                break;
+            case Animal.Mole:
+                Mole.GetComponentInChildren<mole_script>().start_hosting_mole();
+                break;
+            case Animal.Fish:
+                Fish.GetComponentInChildren<fish_script>().start_hosting_fish();
                 break;
         }
     }

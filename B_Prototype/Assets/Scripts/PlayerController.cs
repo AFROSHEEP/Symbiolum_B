@@ -35,7 +35,10 @@ public class PlayerController : MonoBehaviour
                 transform.position.y + host.yOffset, transform.position.z), host.transform.rotation);
 
             if (Input.GetKey(KeyCode.E))
+            {
                 unhost();
+                eject();
+            }
         }
     }
 
@@ -81,11 +84,15 @@ public class PlayerController : MonoBehaviour
         GetComponentInChildren<MeshRenderer>().enabled = true;
         host = null;
         GetComponentInChildren<ParticleSystem>().Play();
-        eject();
+        //eject();
     }
 
     private void OnTriggerEnter(Collider animal)
     {
+        if (host != null && animal.transform.GetComponent<Host>() != null)
+        {
+            unhost();
+        }
         start_hosting(animal);
     }
 
@@ -102,6 +109,7 @@ public class PlayerController : MonoBehaviour
             transform.position = host.transform.position;
             speed = host.speed;
             jumpSpeed = host.jumpSpeed;
+            host.start_host();
         }
     }
 
