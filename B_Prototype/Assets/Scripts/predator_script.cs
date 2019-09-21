@@ -26,7 +26,7 @@ public class predator_script : MonoBehaviour
             {
                 Debug.Log("is prey");
 
-                Destroy(other.gameObject);
+                other.gameObject.SetActive(false);
             }
         }
     }
