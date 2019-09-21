@@ -45,11 +45,15 @@ public class PlayerController : MonoBehaviour
         {
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
             moveDirection = new Vector3(hInput, 0.0f, vInput);
 =======
             moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
             moveDirection = transform.TransformDirection(moveDirection);
 >>>>>>> master
+=======
+            moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0.0f, Input.GetAxis("Vertical"));
+>>>>>>> parent of 126b67d... rotation and reset
 =======
             moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0.0f, Input.GetAxis("Vertical"));
 >>>>>>> parent of 126b67d... rotation and reset
@@ -61,12 +65,15 @@ public class PlayerController : MonoBehaviour
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         if (hInput != 0 || vInput != 0)
         {
             Quaternion newRotation = Quaternion.LookRotation(moveDirection);
             transform.rotation = Quaternion.Slerp(transform.rotation, newRotation, 0.5f);
             
         }
+=======
+>>>>>>> parent of 126b67d... rotation and reset
 =======
 >>>>>>> parent of 126b67d... rotation and reset
         //else
@@ -87,6 +94,7 @@ public class PlayerController : MonoBehaviour
         moveDirection.y -= gravity * Time.deltaTime;
         characterController.Move(moveDirection * Time.deltaTime);
 <<<<<<< HEAD
+<<<<<<< HEAD
         
 =======
         else
@@ -100,6 +108,8 @@ public class PlayerController : MonoBehaviour
         moveDirection.y -= gravity * Time.deltaTime;
             characterController.Move(moveDirection * Time.deltaTime);
 >>>>>>> master
+=======
+>>>>>>> parent of 126b67d... rotation and reset
 =======
 >>>>>>> parent of 126b67d... rotation and reset
     }
