@@ -20,10 +20,15 @@ public class bear_script : MonoBehaviour
     void Update()
     {
         if (is_possessed)
+        {
             transform.position = player.transform.position;
+            Quaternion newRotation = Quaternion.LookRotation(player.transform.position);
+            transform.rotation = Quaternion.Slerp(transform.rotation, newRotation, 0.05f);
+        }
         else
         {
             transform.position = Vector3.MoveTowards(transform.position, spots[goal].position, sp * Time.deltaTime);
+
             if (Vector3.Distance(transform.position, spots[goal].position) < 0.3f)
             {
                 if (wait > 0)
@@ -35,8 +40,18 @@ public class bear_script : MonoBehaviour
                 }
 
             }
+            else
+            {
+                Vector3 targetDir = -1*(spots[goal].position - transform.position);
+                Quaternion newRotation = Quaternion.LookRotation(targetDir);
+                transform.rotation = Quaternion.Slerp(transform.rotation, newRotation, 0.05f);
+            }
+
         }
     }
+
+    
+
 
     public void activate_skill()
     {
