@@ -41,9 +41,13 @@ public class PlayerController : MonoBehaviour
 
     private void Move()
     {
+        float hInput = Input.GetAxis("Horizontal");
+        float vInput = Input.GetAxis("Vertical");
+
+
         if (characterController.isGrounded)
         {
-            moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
+            moveDirection = new Vector3(hInput, 0.0f, vInput);
             moveDirection = transform.TransformDirection(moveDirection);
             moveDirection *= -speed;
 
@@ -58,6 +62,13 @@ public class PlayerController : MonoBehaviour
             moveDirection.x *= -speed;
             moveDirection.z *= -speed;
         }
+
+        //if (hInput != 0 || vInput != 0)
+        //{
+        //    Quaternion newRotation = Quaternion.LookRotation(moveDirection);
+        //    transform.rotation = Quaternion.Slerp(transform.rotation, newRotation, 0.5f);
+
+        //}
 
         moveDirection.y -= gravity * Time.deltaTime;
             characterController.Move(moveDirection * Time.deltaTime);
