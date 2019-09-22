@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum Animal { Bear, Mole, Fish };
+public enum Animal { Bear, Mole, Fish, Fox, Beaver, Bunny };
 
 public class Host : MonoBehaviour
 {
@@ -18,6 +18,8 @@ public class Host : MonoBehaviour
     public GameObject Mole;
     public GameObject Bear;
     public GameObject Fish;
+
+    public Animal[] Prey = { Animal.Mole, Animal.Bunny, Animal.Beaver };
 
     void Update()
     {
