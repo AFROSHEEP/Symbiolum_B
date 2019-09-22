@@ -22,7 +22,7 @@ public class bear_script : MonoBehaviour
         if (is_possessed)
         {
             transform.position = player.transform.position;
-            Quaternion newRotation = Quaternion.LookRotation(player.transform.position);
+            Quaternion newRotation = Quaternion.LookRotation(player.transform.position) * Quaternion.AngleAxis(180, Vector3.up);
             transform.rotation = Quaternion.Slerp(transform.rotation, newRotation, 0.05f);
         }
         else
@@ -43,7 +43,7 @@ public class bear_script : MonoBehaviour
             else
             {
                 Vector3 targetDir = -1*(spots[goal].position - transform.position);
-                Quaternion newRotation = Quaternion.LookRotation(targetDir);
+                Quaternion newRotation = Quaternion.LookRotation(targetDir) * Quaternion.AngleAxis(180, Vector3.up); ;
                 transform.rotation = Quaternion.Slerp(transform.rotation, newRotation, 0.05f);
             }
 
