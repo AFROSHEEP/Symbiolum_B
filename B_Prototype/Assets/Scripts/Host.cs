@@ -20,6 +20,7 @@ public class Host : MonoBehaviour
     public GameObject Fish;
 
     public Animal[] Prey = { Animal.Mole, Animal.Bunny, Animal.Beaver };
+    //public Animal[] Prey = { Animal.Bunny, Animal.Beaver };
 
     void Update()
     {
