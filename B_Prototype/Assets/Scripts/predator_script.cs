@@ -42,16 +42,16 @@ public class predator_script : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Collided");
+        //Debug.Log("Collided");
         if (other.gameObject.tag == "Player")
         {
-            Debug.Log("Player");
+            //Debug.Log("Player");
             GM.GetComponent<GameManager>().restart_scene();
         }
 
         else if (other.gameObject.tag == "Animal")
         {
-            Debug.Log("Prey");
+            //Debug.Log("Prey");
             if (is_prey(other))
             {
                 GM.GetComponent<GameManager>().restart_scene();

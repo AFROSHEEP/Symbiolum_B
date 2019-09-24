@@ -23,8 +23,9 @@ public class bear_script : MonoBehaviour
         if (is_possessed)
         {
             transform.position = player.transform.position;
-            Quaternion newRotation = Quaternion.LookRotation(player.transform.position) * Quaternion.AngleAxis(180, Vector3.up);
-            transform.rotation = Quaternion.Slerp(transform.rotation, newRotation, 0.05f);
+            //Quaternion newRotation = Quaternion.LookRotation(player.transform.position) * Quaternion.AngleAxis(180, Vector3.up);
+            //transform.rotation = Quaternion.Slerp(transform.rotation, newRotation, 0.05f);
+            transform.rotation = player.transform.rotation * Quaternion.AngleAxis(180, Vector3.up);
         }
         else
         {
