@@ -42,24 +42,28 @@ public class predator_script : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
+        Debug.Log("Collided");
         if (other.gameObject.tag == "Player")
         {
+            Debug.Log("Player");
             GM.GetComponent<GameManager>().restart_scene();
         }
 
         else if (other.gameObject.tag == "Animal")
         {
+            Debug.Log("Prey");
             if (is_prey(other))
             {
-                //deactivate renderers
-                MeshRenderer[] rs = other.gameObject.GetComponentsInChildren<MeshRenderer>();
-                foreach (MeshRenderer r in rs)
-                    r.enabled = false;
+                GM.GetComponent<GameManager>().restart_scene();
+                ////deactivate renderers
+                //MeshRenderer[] rs = other.gameObject.GetComponentsInChildren<MeshRenderer>();
+                //foreach (MeshRenderer r in rs)
+                //    r.enabled = false;
 
-                //deactivate colliders
-                BoxCollider[] bs = other.gameObject.GetComponentsInChildren<BoxCollider>();
-                foreach (BoxCollider b in bs)
-                    b.enabled = false;
+                ////deactivate colliders
+                //BoxCollider[] bs = other.gameObject.GetComponentsInChildren<BoxCollider>();
+                //foreach (BoxCollider b in bs)
+                //    b.enabled = false;
             }
         }
     }

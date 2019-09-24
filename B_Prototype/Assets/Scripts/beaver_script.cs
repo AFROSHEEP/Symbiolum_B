@@ -84,4 +84,5 @@ public class beaver_script : MonoBehaviour
     {
         is_possessed = false;
     }
+
 }
