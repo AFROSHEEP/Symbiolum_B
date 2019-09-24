@@ -9,6 +9,7 @@ TagManager:
   - Goal
   - MoleSpot
   - BearSpot
+  - Ground
   layers:
   - Default
   - TransparentFX

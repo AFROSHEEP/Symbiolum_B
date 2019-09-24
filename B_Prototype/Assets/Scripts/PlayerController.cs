@@ -82,13 +82,13 @@ public class PlayerController : MonoBehaviour
         switch (host.type)
         {
             case Animal.Bear:
-                host.GetComponent<bear_script>().end_hosting_bear();
+                host.GetComponent<bear_script>().end_hosting();
                 break;
             case Animal.Mole:
-                host.GetComponent<mole_script>().end_hosting_mole();
+                host.GetComponent<mole_script>().end_hosting();
                 break;
             case Animal.Fish:
-                host.GetComponent<fish_script>().end_hosting_fish();
+                host.GetComponent<fish_script>().end_hosting();
                 break;
         }
 

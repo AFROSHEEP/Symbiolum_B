@@ -37,7 +37,8 @@ public class mole_script : MonoBehaviour
                 spots = area2;
             else
                 spots = area1;
-            transform.position = Vector3.MoveTowards(transform.position, spots[goal].position, sp * Time.deltaTime);
+            Vector3 move = Vector3.MoveTowards(transform.position, spots[goal].position, sp * Time.deltaTime);
+            transform.position = move;
 
             if (Vector3.Distance(transform.position, spots[goal].position) < 0.3f)
             {
@@ -46,7 +47,10 @@ public class mole_script : MonoBehaviour
                 else
                 {
                     wait = 2.0f;
-                    goal = Random.Range(0, spots.Length);
+                    //goal = Random.Range(0, spots.Length);
+                    goal++;
+                    if (goal == spots.Length)
+                        goal = 0;
                 }
 
             }
