@@ -18,7 +18,7 @@ public class mole_script : MonoBehaviour
 
     private void Start()
     {
-        goal = Random.Range(0, spots.Length);
+        //goal = Random.Range(0, spots.Length);
         spots = area1;
     }
 
@@ -33,7 +33,7 @@ public class mole_script : MonoBehaviour
         }
         else
         {
-            if (transform.position.x < 580)
+            if (transform.position.x > 580)
                 spots = area2;
             else
                 spots = area1;
@@ -119,5 +119,6 @@ public class mole_script : MonoBehaviour
     {
         deactivate_skill();
         is_possessed = false;
+        goal = 0;
     }
 }
