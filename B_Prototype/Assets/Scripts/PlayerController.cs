@@ -82,13 +82,16 @@ public class PlayerController : MonoBehaviour
         switch (host.type)
         {
             case Animal.Bear:
-                host.GetComponent<bear_script>().end_hosting_bear();
+                host.GetComponent<bear_script>().end_hosting();
                 break;
             case Animal.Mole:
-                host.GetComponent<mole_script>().end_hosting_mole();
+                host.GetComponent<mole_script>().end_hosting();
                 break;
             case Animal.Fish:
-                host.GetComponent<fish_script>().end_hosting_fish();
+                host.GetComponent<fish_script>().end_hosting();
+                break;
+            case Animal.Beaver:
+                host.GetComponent<beaver_script>().end_hosting();
                 break;
         }
 
@@ -114,9 +117,9 @@ public class PlayerController : MonoBehaviour
         if (animal.transform.GetComponent<Host>() != null)
         {
             //Debug.Log("in if");
-            GetComponentInChildren<ParticleSystem>().Stop();
+            this.GetComponentInChildren<ParticleSystem>().Stop();
             host = animal.transform.GetComponent<Host>();
-            GetComponentInChildren<MeshRenderer>().enabled = false;
+            this.GetComponentInChildren<MeshRenderer>().enabled = false;
             transform.position = host.transform.position;
             speed = host.speed;
             jumpSpeed = host.jumpSpeed;

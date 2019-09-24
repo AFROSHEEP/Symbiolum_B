@@ -18,7 +18,7 @@ public class mole_script : MonoBehaviour
 
     private void Start()
     {
-        goal = Random.Range(0, spots.Length);
+        //goal = Random.Range(0, spots.Length);
         spots = area1;
     }
 
@@ -27,16 +27,18 @@ public class mole_script : MonoBehaviour
         if (is_possessed)
         {
             transform.position = player.transform.position;
-            Quaternion newRotation = Quaternion.LookRotation(player.transform.position) * Quaternion.AngleAxis(180, Vector3.up);
-            transform.rotation = Quaternion.Slerp(transform.rotation, newRotation, 0.05f);
+            //Quaternion newRotation = Quaternion.LookRotation(player.transform.position) * Quaternion.AngleAxis(180, Vector3.up);
+            //transform.rotation = Quaternion.Slerp(transform.rotation, newRotation, 0.05f);
+            transform.rotation = player.transform.rotation * Quaternion.AngleAxis(180, Vector3.up);
         }
         else
         {
-            if (transform.position.z < 50)
+            if (transform.position.x > 580)
                 spots = area2;
             else
                 spots = area1;
-            transform.position = Vector3.MoveTowards(transform.position, spots[goal].position, sp * Time.deltaTime);
+            Vector3 move = Vector3.MoveTowards(transform.position, spots[goal].position, sp * Time.deltaTime);
+            transform.position = move;
 
             if (Vector3.Distance(transform.position, spots[goal].position) < 0.3f)
             {
@@ -45,7 +47,10 @@ public class mole_script : MonoBehaviour
                 else
                 {
                     wait = 2.0f;
-                    goal = Random.Range(0, spots.Length);
+                    //goal = Random.Range(0, spots.Length);
+                    goal++;
+                    if (goal == spots.Length)
+                        goal = 0;
                 }
 
             }
@@ -61,26 +66,29 @@ public class mole_script : MonoBehaviour
 
     public void activate_skill()
     {
-        if (skill_active)
-            deactivate_skill();
-
-        else if(is_possessed)
+        if (is_possessed)
         {
-            Debug.Log("Activating Mole");
-            skill_active = true;
+            if (skill_active)
+                deactivate_skill();
 
-            //activate particle effect
-            Lilipad.GetComponent<ParticleSystem>().Play();
+            else
+            {
+                //Debug.Log("Activating Mole");
+                skill_active = true;
 
-            //deactivate meshrenderers
-            MeshRenderer[] rs = parent.GetComponentsInChildren<MeshRenderer>();
-            foreach (MeshRenderer r in rs)
-                r.enabled = false;
+                //activate particle effect
+                Lilipad.GetComponent<ParticleSystem>().Play();
 
-            //deactivate colliders
-            BoxCollider[] bs = parent.GetComponentsInChildren<BoxCollider>();
-            foreach (BoxCollider b in bs)
-                b.enabled = false;
+                //deactivate meshrenderers
+                MeshRenderer[] rs = parent.GetComponentsInChildren<MeshRenderer>();
+                foreach (MeshRenderer r in rs)
+                    r.enabled = false;
+
+                //deactivate colliders
+                BoxCollider[] bs = parent.GetComponentsInChildren<BoxCollider>();
+                foreach (BoxCollider b in bs)
+                    b.enabled = false;
+            } 
         }
     }
 
@@ -102,14 +110,15 @@ public class mole_script : MonoBehaviour
             b.enabled = true;
     }
 
-    public void start_hosting_mole()
+    public void start_hosting()
     {
         is_possessed = true;
     }
 
-    public void end_hosting_mole()
+    public void end_hosting()
     {
         deactivate_skill();
         is_possessed = false;
+        goal = 0;
     }
 }

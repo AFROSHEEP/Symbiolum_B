@@ -27,7 +27,8 @@ public class water_script : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
             if (other.gameObject.GetComponent<PlayerController>().host != null)
-                if (other.gameObject.GetComponent<PlayerController>().host.type == Animal.Fish)
+                if (other.gameObject.GetComponent<PlayerController>().host.type == Animal.Fish
+                 || other.gameObject.GetComponent<PlayerController>().host.type == Animal.Beaver)
                     StopCoroutine("countdown");
     }
 

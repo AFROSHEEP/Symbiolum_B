@@ -21,7 +21,7 @@ public class GameManager : MonoBehaviour
 
     public void restart_scene()
     {
-        SceneManager.LoadScene("Main2");
+        SceneManager.LoadScene("Main3");
     }
 
     public void load_scene(string name)

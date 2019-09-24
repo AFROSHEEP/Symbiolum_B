@@ -50,12 +50,12 @@ public class fish_script : MonoBehaviour
         }
     }
 
-    public void start_hosting_fish()
+    public void start_hosting()
     {
         is_possessed = true;
     }
 
-    public void end_hosting_fish()
+    public void end_hosting()
     {
         is_possessed = false;
     }
