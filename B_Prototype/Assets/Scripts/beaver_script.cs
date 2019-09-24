@@ -14,6 +14,9 @@ public class beaver_script : MonoBehaviour
     public Transform[] spots;
     private int goal;
     private float wait = 2.0f;
+    public float logY;
+    public float logZ;
+    public float logAngle;
 
     public GameObject player;
     //public GameObject parent;
@@ -66,10 +69,10 @@ public class beaver_script : MonoBehaviour
     private void spawn_log()
     {
         float x = transform.position.x;
-        float y = transform.position.y + 4;
-        float z = transform.position.z - 12; // make these numbers variables
+        float y = transform.position.y + logY;
+        float z = transform.position.z - logZ; // make these numbers variables
         
-        Instantiate(beaverLog, new Vector3(x, y, z), Quaternion.Euler(30, 0, 0));
+        Instantiate(beaverLog, new Vector3(x, y, z), Quaternion.Euler(logAngle, 0, 0));
     }
 
     public void start_hosting()
