@@ -106,12 +106,12 @@ public class mole_script : MonoBehaviour
             b.enabled = true;
     }
 
-    public void start_hosting_mole()
+    public void start_hosting()
     {
         is_possessed = true;
     }
 
-    public void end_hosting_mole()
+    public void end_hosting()
     {
         deactivate_skill();
         is_possessed = false;
