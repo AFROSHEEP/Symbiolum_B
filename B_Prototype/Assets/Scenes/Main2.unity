@@ -2748,6 +2748,7 @@ MonoBehaviour:
   Mole: {fileID: 0}
   Bear: {fileID: 0}
   Fish: {fileID: 1960096029}
+  Beaver: {fileID: 0}
   Prey: 010000000500000004000000
 --- !u!65 &188385897
 BoxCollider:
@@ -2933,6 +2934,76 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 196325801}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &202708683 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4853639886070424171, guid: e1dce4c834b41f54c96889bbb53c4f4f,
+    type: 3}
+  m_PrefabInstance: {fileID: 1958535207}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &202708684
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 202708683}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a2f109d5893a7b4c8ecc2cb3d9b7148, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  is_possessed: 0
+  skill_active: 0
+  beaverLog: {fileID: 7659286123673765753, guid: f9627b0cef662ec44a849ae022cd1a55,
+    type: 3}
+  sp: 8
+  area1:
+  - {fileID: 2127421995}
+  - {fileID: 2113523339}
+  - {fileID: 2105307846}
+  area2:
+  - {fileID: 1167411410}
+  - {fileID: 1517040670}
+  spots: []
+  player: {fileID: 1903573204}
+--- !u!114 &202708685
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 202708683}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 061f72e095239ef4e9e64dcdbaf7250e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  size: 0
+  water: 0
+  speed: 40
+  jumpSpeed: 30
+  yOffset: 0
+  type: 4
+  skill_active: 0
+  host: {fileID: 0}
+  Mole: {fileID: 0}
+  Bear: {fileID: 0}
+  Fish: {fileID: 0}
+  Beaver: {fileID: 931230427}
+  Prey: 010000000500000004000000
+--- !u!65 &202708686
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 202708683}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 4.8319693, y: 2.701566, z: 9.923053}
+  m_Center: {x: 0.10331472, y: 0.85078347, z: -1.5756308}
 --- !u!1001 &205115149
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8633,6 +8704,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   is_possessed: 0
   skill_active: 0
+  is_grounded: 0
   sp: 4
   spots:
   - {fileID: 429768795}
@@ -8667,6 +8739,7 @@ MonoBehaviour:
   Mole: {fileID: 916543130}
   Bear: {fileID: 1105256805}
   Fish: {fileID: 0}
+  Beaver: {fileID: 0}
   Prey: 010000000500000004000000
 --- !u!54 &518220794
 Rigidbody:
@@ -8938,6 +9011,7 @@ MonoBehaviour:
   Mole: {fileID: 675928351}
   Bear: {fileID: 1605253964}
   Fish: {fileID: 0}
+  Beaver: {fileID: 0}
   Prey: 010000000500000004000000
 --- !u!114 &528734841
 MonoBehaviour:
@@ -9935,6 +10009,7 @@ MonoBehaviour:
   Mole: {fileID: 0}
   Bear: {fileID: 0}
   Fish: {fileID: 1698143482}
+  Beaver: {fileID: 0}
   Prey: 010000000500000004000000
 --- !u!114 &581781740
 MonoBehaviour:
@@ -16819,6 +16894,7 @@ MonoBehaviour:
   Mole: {fileID: 916543130}
   Bear: {fileID: 0}
   Fish: {fileID: 0}
+  Beaver: {fileID: 0}
   Prey: 010000000500000004000000
 --- !u!1001 &742132538
 PrefabInstance:
@@ -17658,6 +17734,7 @@ MonoBehaviour:
   Mole: {fileID: 675928351}
   Bear: {fileID: 1605253964}
   Fish: {fileID: 0}
+  Beaver: {fileID: 0}
   Prey: 010000000500000004000000
 --- !u!114 &811108449
 MonoBehaviour:
@@ -17673,6 +17750,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   is_possessed: 0
   skill_active: 0
+  is_grounded: 0
   sp: 4
   spots:
   - {fileID: 429768795}
@@ -19374,7 +19452,7 @@ GameObject:
   - component: {fileID: 931230428}
   m_Layer: 0
   m_Name: New Beaver
-  m_TagString: Untagged
+  m_TagString: Animal
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -19387,7 +19465,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 931230427}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.84, y: -18.17, z: 218.031}
+  m_LocalPosition: {x: -1.84, y: -18.17, z: 1.8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1958535208}
@@ -27926,6 +28004,36 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1160240592}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1167411409
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1167411410}
+  m_Layer: 0
+  m_Name: BeaverSpot (3)
+  m_TagString: MoleSpot
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1167411410
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1167411409}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -62.5, y: 0, z: -118.4}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1933550089}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1169620725
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -37770,6 +37878,36 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1514726952}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1517040669
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1517040670}
+  m_Layer: 0
+  m_Name: BeaverSpot (4)
+  m_TagString: MoleSpot
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1517040670
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1517040669}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -33, y: 0, z: -97.5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1933550089}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1522240637
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -44660,7 +44798,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1903573204}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.46, y: -17.27, z: 221.67}
+  m_LocalPosition: {x: -2.46, y: -17.27, z: 37}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1274898663}
@@ -45319,6 +45457,41 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1932017123}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1933550088
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1933550089}
+  m_Layer: 0
+  m_Name: BeaverSpots
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1933550089
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1933550088}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 29.600002, y: -18.31, z: 94.7}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 2127421995}
+  - {fileID: 2113523339}
+  - {fileID: 2105307846}
+  - {fileID: 1167411410}
+  - {fileID: 1517040670}
+  m_Father: {fileID: 0}
+  m_RootOrder: 26
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1939901703
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -45660,6 +45833,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: lowplybeaver
+      objectReference: {fileID: 0}
+    - target: {fileID: 4853639886070424171, guid: e1dce4c834b41f54c96889bbb53c4f4f,
+        type: 3}
+      propertyPath: m_TagString
+      value: Animal
       objectReference: {fileID: 0}
     - target: {fileID: 8430965114902139000, guid: e1dce4c834b41f54c96889bbb53c4f4f,
         type: 3}
@@ -48283,6 +48461,36 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 2097602370}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &2105307845
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2105307846}
+  m_Layer: 0
+  m_Name: BeaverSpot (2)
+  m_TagString: MoleSpot
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2105307846
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2105307845}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -60.9, y: 0, z: -67.7}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1933550089}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2106233121
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -48543,6 +48751,36 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 2110479471}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &2113523338
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2113523339}
+  m_Layer: 0
+  m_Name: BeaverSpot (1)
+  m_TagString: MoleSpot
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2113523339
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2113523338}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -120.6}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1933550089}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2117097829
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -48693,6 +48931,36 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 2124733615}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &2127421994
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2127421995}
+  m_Layer: 0
+  m_Name: BeaverSpot
+  m_TagString: MoleSpot
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2127421995
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2127421994}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -67.7}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1933550089}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2129943994
 PrefabInstance:
   m_ObjectHideFlags: 0
