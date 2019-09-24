@@ -114,9 +114,9 @@ public class PlayerController : MonoBehaviour
         if (animal.transform.GetComponent<Host>() != null)
         {
             //Debug.Log("in if");
-            GetComponentInChildren<ParticleSystem>().Stop();
+            this.GetComponentInChildren<ParticleSystem>().Stop();
             host = animal.transform.GetComponent<Host>();
-            GetComponentInChildren<MeshRenderer>().enabled = false;
+            this.GetComponentInChildren<MeshRenderer>().enabled = false;
             transform.position = host.transform.position;
             speed = host.speed;
             jumpSpeed = host.jumpSpeed;
