@@ -6,6 +6,7 @@ public class beaver_script : MonoBehaviour
 {
     public bool is_possessed;
     public bool skill_active;
+    public GameObject beaverLog;
 
     public float sp = 8.0f;
     public Transform[] area1;
@@ -15,7 +16,7 @@ public class beaver_script : MonoBehaviour
     private float wait = 2.0f;
 
     public GameObject player;
-    public GameObject parent;
+    //public GameObject parent;
 
     private void Start()
     {
@@ -38,6 +39,7 @@ public class beaver_script : MonoBehaviour
                 spots = area2;
             else
                 spots = area1;
+
             transform.position = Vector3.MoveTowards(transform.position, spots[goal].position, sp * Time.deltaTime);
 
             if (Vector3.Distance(transform.position, spots[goal].position) < 0.3f)
@@ -57,21 +59,22 @@ public class beaver_script : MonoBehaviour
                 Quaternion newRotation = Quaternion.LookRotation(targetDir) * Quaternion.AngleAxis(180, Vector3.up);
                 transform.rotation = Quaternion.Slerp(transform.rotation, newRotation, 0.05f);
             }
-
         }
     }
 
     public void activate_skill()
     {
         if (is_possessed)
-        {
             spawn_log();
-        }
     }
 
     private void spawn_log()
     {
-        //TODO
+        float x = transform.position.x;
+        float y = transform.position.y + 4;
+        float z = transform.position.z - 12; // make these numbers variables
+        
+        Instantiate(beaverLog, new Vector3(x, y, z), Quaternion.Euler(30, 0, 0));
     }
 
     public void start_hosting()
