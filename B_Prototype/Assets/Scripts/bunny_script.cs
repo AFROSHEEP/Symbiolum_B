@@ -65,10 +65,9 @@ public class bunny_script : MonoBehaviour
 
     public void activate_skill()
     {
-        if (skill_active)
-            deactivate_skill();
-        else
-            skill_active = true;
+        skill_active = true;
+                    
+        skill_active = false;
     }
 
     public void deactivate_skill()

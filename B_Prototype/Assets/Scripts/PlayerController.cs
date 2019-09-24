@@ -6,8 +6,8 @@ public class PlayerController : MonoBehaviour
     CharacterController characterController;
 
     public float speed = 30.0f;
-    public float jumpSpeed = 20.0f;
-    public float gravity = 60.0f;
+    public float jumpSpeed = 80.0f;
+    public float gravity = 40.0f;
     public Host host;
     public float horizontalSpeed = 2.0F;
     public float verticalSpeed = 2.0F;
@@ -54,8 +54,8 @@ public class PlayerController : MonoBehaviour
             moveDirection = transform.TransformDirection(moveDirection);
             moveDirection *= -speed;
 
-            //if (Input.GetKeyDown(KeyCode.Space))
-            //    moveDirection.y = jumpSpeed;
+            if (Input.GetMouseButtonDown(0) && host != null && host.type == Animal.Bunny)
+                moveDirection.y = jumpSpeed;
         }
 
         else
