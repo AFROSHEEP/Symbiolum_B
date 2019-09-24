@@ -54,8 +54,8 @@ public class PlayerController : MonoBehaviour
             moveDirection = transform.TransformDirection(moveDirection);
             moveDirection *= -speed;
 
-            //if (Input.GetKeyDown(KeyCode.Space))
-            //    moveDirection.y = jumpSpeed;
+            if (Input.GetMouseButtonDown(0) && host != null && host.type == Animal.Bunny)
+                moveDirection.y = jumpSpeed;
         }
 
         else
