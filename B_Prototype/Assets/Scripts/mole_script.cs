@@ -62,26 +62,29 @@ public class mole_script : MonoBehaviour
 
     public void activate_skill()
     {
-        if (skill_active)
-            deactivate_skill();
-
-        else if(is_possessed)
+        if (is_possessed)
         {
-            Debug.Log("Activating Mole");
-            skill_active = true;
+            if (skill_active)
+                deactivate_skill();
 
-            //activate particle effect
-            Lilipad.GetComponent<ParticleSystem>().Play();
+            else
+            {
+                //Debug.Log("Activating Mole");
+                skill_active = true;
 
-            //deactivate meshrenderers
-            MeshRenderer[] rs = parent.GetComponentsInChildren<MeshRenderer>();
-            foreach (MeshRenderer r in rs)
-                r.enabled = false;
+                //activate particle effect
+                Lilipad.GetComponent<ParticleSystem>().Play();
 
-            //deactivate colliders
-            BoxCollider[] bs = parent.GetComponentsInChildren<BoxCollider>();
-            foreach (BoxCollider b in bs)
-                b.enabled = false;
+                //deactivate meshrenderers
+                MeshRenderer[] rs = parent.GetComponentsInChildren<MeshRenderer>();
+                foreach (MeshRenderer r in rs)
+                    r.enabled = false;
+
+                //deactivate colliders
+                BoxCollider[] bs = parent.GetComponentsInChildren<BoxCollider>();
+                foreach (BoxCollider b in bs)
+                    b.enabled = false;
+            } 
         }
     }
 
@@ -103,12 +106,12 @@ public class mole_script : MonoBehaviour
             b.enabled = true;
     }
 
-    public void start_hosting_mole()
+    public void start_hosting()
     {
         is_possessed = true;
     }
 
-    public void end_hosting_mole()
+    public void end_hosting()
     {
         deactivate_skill();
         is_possessed = false;

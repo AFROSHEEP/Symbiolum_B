@@ -57,8 +57,8 @@ public class bear_script : MonoBehaviour
     {
         if (skill_active)
             deactivate_skill();
-
-        skill_active = true;
+        else
+            skill_active = true;
     }
 
     public void deactivate_skill()
@@ -66,14 +66,14 @@ public class bear_script : MonoBehaviour
         skill_active = false;
     }
 
-    public void start_hosting_bear()
+    public void start_hosting()
     {
         is_possessed = true;
     }
 
-    public void end_hosting_bear()
+    public void end_hosting()
     {
-        deactivate_skill();
+        //deactivate_skill();
         is_possessed = false;
     }
 }

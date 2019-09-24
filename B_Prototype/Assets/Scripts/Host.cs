@@ -18,6 +18,7 @@ public class Host : MonoBehaviour
     public GameObject Mole;
     public GameObject Bear;
     public GameObject Fish;
+    public GameObject Beaver;
 
     public Animal[] Prey = { Animal.Mole, Animal.Bunny, Animal.Beaver };
     //public Animal[] Prey = { Animal.Bunny, Animal.Beaver };
@@ -36,10 +37,12 @@ public class Host : MonoBehaviour
                 Bear.GetComponentInChildren<bear_script>().activate_skill();
                 break;
             case Animal.Mole:
-                Debug.Log("Activating");
                 Mole.GetComponentInChildren<mole_script>().activate_skill();
                 break;
             case Animal.Fish:
+                break;
+            case Animal.Beaver:
+                Beaver.GetComponentInChildren<beaver_script>().activate_skill();
                 break;
         }
     }
@@ -49,13 +52,16 @@ public class Host : MonoBehaviour
         switch (type)
         {
             case Animal.Bear:
-                Bear.GetComponentInChildren<bear_script>().start_hosting_bear();
+                Bear.GetComponentInChildren<bear_script>().start_hosting();
                 break;
             case Animal.Mole:
-                Mole.GetComponentInChildren<mole_script>().start_hosting_mole();
+                Mole.GetComponentInChildren<mole_script>().start_hosting();
                 break;
             case Animal.Fish:
-                Fish.GetComponentInChildren<fish_script>().start_hosting_fish();
+                Fish.GetComponentInChildren<fish_script>().start_hosting();
+                break;
+            case Animal.Beaver:
+                Beaver.GetComponentInChildren<beaver_script>().start_hosting();
                 break;
         }
     }
