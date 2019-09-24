@@ -93,6 +93,9 @@ public class PlayerController : MonoBehaviour
             case Animal.Beaver:
                 host.GetComponent<beaver_script>().end_hosting();
                 break;
+            case Animal.Bunny:
+                host.GetComponent<bunny_script>().end_hosting();
+                break;
         }
 
         GetComponentInChildren<MeshRenderer>().enabled = true;
