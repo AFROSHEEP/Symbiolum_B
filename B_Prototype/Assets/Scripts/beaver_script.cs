@@ -35,11 +35,6 @@ public class beaver_script : MonoBehaviour
         }
         else
         {
-            if (transform.position.z < 50)
-                spots = area2;
-            else
-                spots = area1;
-
             transform.position = Vector3.MoveTowards(transform.position, spots[goal].position, sp * Time.deltaTime);
 
             if (Vector3.Distance(transform.position, spots[goal].position) < 0.3f)
