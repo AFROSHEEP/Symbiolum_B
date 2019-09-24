@@ -33,7 +33,7 @@ public class mole_script : MonoBehaviour
         }
         else
         {
-            if (transform.position.z < 50)
+            if (transform.position.x < 580)
                 spots = area2;
             else
                 spots = area1;
